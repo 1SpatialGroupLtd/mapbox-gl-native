@@ -49,6 +49,7 @@ target_include_directories(mbgl-node INTERFACE
 target_link_libraries(mbgl-node INTERFACE
     mbgl-core
     mbgl-loop-node
+    -Wl,--version-script=${CMAKE_SOURCE_DIR}/platform/node/version-script
 )
 
 target_add_mason_package(mbgl-node INTERFACE geojson)
