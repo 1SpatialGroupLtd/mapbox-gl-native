@@ -98,6 +98,7 @@ macro(mbgl_platform_core)
 
     target_link_libraries(mbgl-core
         PUBLIC -lz
+        PUBLIC -static-libstdc++
     )
 endmacro()
 
