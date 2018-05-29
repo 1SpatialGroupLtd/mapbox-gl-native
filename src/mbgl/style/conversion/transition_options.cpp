@@ -10,7 +10,10 @@ optional<TransitionOptions> Converter<TransitionOptions>::operator()(const Conve
         return {};
     }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
     TransitionOptions result;
+#pragma GCC diagnostic pop
 
     auto duration = objectMember(value, "duration");
     if (duration) {
