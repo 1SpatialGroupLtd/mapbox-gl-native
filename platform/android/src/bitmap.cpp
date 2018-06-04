@@ -14,7 +14,7 @@ public:
             throw std::runtime_error("bitmap decoding: could not lock pixels");
         }
     }
-    ~PixelGuard() {
+    ~PixelGuard() throw(std::exception) {
         const int result = AndroidBitmap_unlockPixels(&env, jni::Unwrap(*bitmap));
         if (result != ANDROID_BITMAP_RESULT_SUCCESS) {
             throw std::runtime_error("bitmap decoding: could not unlock pixels");

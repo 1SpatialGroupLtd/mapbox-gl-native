@@ -48,11 +48,11 @@ android {
     //
     // When building from Android Studio, gradle.properties sets `android.buildOnlyTargetAbi=true` so that
     // only the architecture for the device you're running on gets built.
-    def abi = 'all'
-    if (!project.hasProperty('android.injected.invoked.from.ide') || project.hasProperty("mapbox.abis")) {
+    def abi = 'armeabi-v7a x86 arm64-v8a x86_64'
+    //if (!project.hasProperty('android.injected.invoked.from.ide') || project.hasProperty("mapbox.abis")) {
         // Errors when the user invokes Gradle from the command line and didn't set mapbox.abis
-        abi = project.getProperty("mapbox.abis")
-    }
+        //abi = project.getProperty("mapbox.abis")
+    //}
 
     if (abi != 'none') {
         externalNativeBuild {
@@ -80,7 +80,7 @@ android {
                         // ccache splits up the compile command until multiple invocations and uses -E
                         // with one of them, and clang doesn't like unused arguments in that case.
                         cFlags "-Qunused-arguments"
-                        cppFlags "-Qunused-arguments"
+                        cppFlags "-Qunused-arguments -Wno-tautological-constant-compare -Wno-tautological-compare"
                     }
 
                     targets "mapbox-gl"
@@ -120,7 +120,7 @@ android {
     }
 
     lintOptions {
-        disable 'MissingTranslation', 'TypographyQuotes'
+        disable 'MissingTranslation', 'TypographyQuotes', 'MissingPermission'
         baseline file("lint-baseline-local.xml")
         checkAllWarnings true
         warningsAsErrors false

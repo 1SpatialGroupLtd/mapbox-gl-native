@@ -1975,6 +1975,96 @@ public final class MapboxMap {
   }
 
   /**
+   * Sets a callback that's invoked when the user double clicks on the map view.
+   *
+   * @param listener The callback that's invoked when the user double clicks on the map view.
+   *                 To unset the callback, use null.
+   * @deprecated Use {@link #addOnMapDoubleClickListener(OnMapDoubleClickListener)} instead.
+   */
+  @Deprecated
+  public void setOnMapDoubleClickListener(@Nullable OnMapDoubleClickListener listener) {
+    onRegisterTouchListener.onSetMapDoubleClickListener(listener);
+  }
+
+  /**
+   * Adds a callback that's invoked when the user double clicks on the map view.
+   *
+   * @param listener The callback that's invoked when the user double clicks on the map view.
+   */
+  public void addOnMapDoubleClickListener(@NonNull OnMapDoubleClickListener listener) {
+    onRegisterTouchListener.onAddMapDoubleClickListener(listener);
+  }
+
+  /**
+   * Removes a callback that's invoked when the user double clicks on the map view.
+   *
+   * @param listener The callback that's invoked when the user double clicks on the map view.
+   */
+  public void removeOnMapDoubleClickListener(@NonNull OnMapDoubleClickListener listener) {
+    onRegisterTouchListener.onRemoveMapDoubleClickListener(listener);
+  }
+
+  /**
+   * Sets a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   *                 To unset the callback, use null.
+   * @deprecated Use {@link #addOnMapTouchUpListener(OnMapTouchUpListener)} instead.
+   */
+  @Deprecated
+  public void setOnMapTouchDownListener(@Nullable OnMapTouchDownListener listener) {
+    onRegisterTouchListener.onSetMapTouchDownListener(listener);
+  }
+
+  /**
+   * Adds a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   */
+  public void addOnMapTouchDownListener(@NonNull OnMapTouchDownListener listener) {
+    onRegisterTouchListener.onAddMapTouchDownListener(listener);
+  }
+
+  /**
+   * Removes a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   */
+  public void removeOnMapTouchDownListener(@NonNull OnMapTouchDownListener listener) {
+    onRegisterTouchListener.onRemoveMapTouchDownListener(listener);
+  }
+
+  /**
+   * Sets a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   *                 To unset the callback, use null.
+   * @deprecated Use {@link #addOnMapTouchUpListener(OnMapTouchUpListener)} instead.
+   */
+  @Deprecated
+  public void setOnMapTouchUpListener(@Nullable OnMapTouchUpListener listener) {
+    onRegisterTouchListener.onSetMapTouchUpListener(listener);
+  }
+
+  /**
+   * Adds a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   */
+  public void addOnMapTouchUpListener(@NonNull OnMapTouchUpListener listener) {
+    onRegisterTouchListener.onAddMapTouchUpListener(listener);
+  }
+
+  /**
+   * Removes a callback that's invoked when the user touches up on the map view.
+   *
+   * @param listener The callback that's invoked when the user touches up on the map view.
+   */
+  public void removeOnMapTouchUpListener(@NonNull OnMapTouchUpListener listener) {
+    onRegisterTouchListener.onRemoveMapTouchUpListener(listener);
+  }
+
+  /**
    * Sets a callback that's invoked when the user long clicks on the map view.
    *
    * @param listener The callback that's invoked when the user long clicks on the map view.
@@ -2255,19 +2345,20 @@ public final class MapboxMap {
     /**
      * Called when the map is flinged.
      */
-    void onFling();
+    void onFling(@NonNull LatLng startPoint, @NonNull LatLng endPoint);
   }
 
   /**
    * Interface definition for a callback to be invoked when the map is scrolled.
-   *
-   * @see MapboxMap#setOnScrollListener(OnScrollListener)
    */
   public interface OnScrollListener {
+
     /**
      * Called when the map is scrolled.
+     *
+     * @see MapboxMap#setOnScrollListener(OnScrollListener)
      */
-    void onScroll();
+    void onScroll(@Nullable LatLng startPoint, @Nullable LatLng endPoint, @NonNull ScrollEventType scrollEventType);
   }
 
   /**
@@ -2379,6 +2470,24 @@ public final class MapboxMap {
 
     void onRemoveMapClickListener(OnMapClickListener listener);
 
+    void onSetMapDoubleClickListener(OnMapDoubleClickListener listener);
+
+    void onAddMapDoubleClickListener(OnMapDoubleClickListener listener);
+
+    void onRemoveMapDoubleClickListener(OnMapDoubleClickListener listener);
+
+    void onSetMapTouchDownListener(OnMapTouchDownListener listener);
+
+    void onAddMapTouchDownListener(OnMapTouchDownListener listener);
+
+    void onRemoveMapTouchDownListener(OnMapTouchDownListener listener);
+
+    void onSetMapTouchUpListener(OnMapTouchUpListener listener);
+
+    void onAddMapTouchUpListener(OnMapTouchUpListener listener);
+
+    void onRemoveMapTouchUpListener(OnMapTouchUpListener listener);
+
     void onSetMapLongClickListener(OnMapLongClickListener listener);
 
     void onAddMapLongClickListener(OnMapLongClickListener listener);
@@ -2410,6 +2519,48 @@ public final class MapboxMap {
      * @param point The projected map coordinate the user clicked on.
      */
     void onMapClick(@NonNull LatLng point);
+  }
+
+  /**
+   * Interface definition for a callback to be invoked when the user double clicks on the map view.
+   *
+   * @see MapboxMap#setOnMapDoubleClickListener(OnMapDoubleClickListener)
+   */
+  public interface OnMapDoubleClickListener {
+    /**
+     * Called when the user double clicks on the map view.
+     *
+     * @param point The projected map coordinate the user double clicked on.
+     */
+    void onMapDoubleClick(@NonNull LatLng point);
+  }
+
+  /**
+   * Interface definition for a callback to be invoked when the user touches down on the map view.
+   *
+   * @see MapboxMap#setOnMapTouchDownListener(OnMapTouchDownListener)
+   */
+  public interface OnMapTouchDownListener {
+    /**
+     * Called when the user touches down on the map view.
+     *
+     * @param point The projected map coordinate the user touched down on.
+     */
+    void onMapTouchDown(@NonNull LatLng point);
+  }
+
+  /**
+   * Interface definition for a callback to be invoked when the user touches up on the map view.
+   *
+   * @see MapboxMap#setOnMapTouchUpListener(OnMapTouchUpListener)
+   */
+  public interface OnMapTouchUpListener {
+    /**
+     * Called when the user touches up on the map view.
+     *
+     * @param point The projected map coordinate the user clicked on.
+     */
+    void onMapTouchUp(@NonNull LatLng point);
   }
 
   /**
@@ -2756,5 +2907,12 @@ public final class MapboxMap {
   //
   Transform getTransform() {
     return transform;
+  }
+
+  public enum ScrollEventType
+  {
+    SCROLL_START, //
+    SCROLL, //
+    SCROLL_END //
   }
 }

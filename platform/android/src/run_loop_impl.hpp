@@ -31,7 +31,7 @@ public:
     };
 
     Impl(RunLoop*, RunLoop::Type);
-    ~Impl();
+    ~Impl() throw(std::exception);
 
     void wake();
 

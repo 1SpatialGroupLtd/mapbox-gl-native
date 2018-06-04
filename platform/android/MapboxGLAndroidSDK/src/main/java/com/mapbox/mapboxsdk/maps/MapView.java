@@ -934,6 +934,51 @@ public class MapView extends FrameLayout {
     }
 
     @Override
+    public void onSetMapDoubleClickListener(MapboxMap.OnMapDoubleClickListener listener) {
+      mapGestureDetector.setOnMapDoubleClickListener(listener);
+    }
+
+    @Override
+    public void onAddMapDoubleClickListener(MapboxMap.OnMapDoubleClickListener listener) {
+      mapGestureDetector.addOnMapDoubleClickListener(listener);
+    }
+
+    @Override
+    public void onRemoveMapDoubleClickListener(MapboxMap.OnMapDoubleClickListener listener) {
+      mapGestureDetector.removeOnMapDoubleClickListener(listener);
+    }
+
+    @Override
+    public void onSetMapTouchDownListener(MapboxMap.OnMapTouchDownListener listener) {
+      mapGestureDetector.setOnMapTouchDownListener(listener);
+    }
+
+    @Override
+    public void onAddMapTouchDownListener(MapboxMap.OnMapTouchDownListener listener) {
+      mapGestureDetector.addOnMapTouchDownListener(listener);
+    }
+
+    @Override
+    public void onRemoveMapTouchDownListener(MapboxMap.OnMapTouchDownListener listener) {
+      mapGestureDetector.addOnMapTouchDownListener(listener);
+    }
+
+    @Override
+    public void onSetMapTouchUpListener(MapboxMap.OnMapTouchUpListener listener) {
+      mapGestureDetector.setOnMapTouchUpListener(listener);
+    }
+
+    @Override
+    public void onAddMapTouchUpListener(MapboxMap.OnMapTouchUpListener listener) {
+      mapGestureDetector.addOnMapTouchUpListener(listener);
+    }
+
+    @Override
+    public void onRemoveMapTouchUpListener(MapboxMap.OnMapTouchUpListener listener) {
+      mapGestureDetector.removeOnMapTouchUpListener(listener);
+    }
+
+    @Override
     public void onSetMapLongClickListener(MapboxMap.OnMapLongClickListener listener) {
       mapGestureDetector.setOnMapLongClickListener(listener);
     }

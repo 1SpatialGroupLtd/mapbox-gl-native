@@ -8,6 +8,7 @@ import com.mapbox.mapboxsdk.exceptions.MapboxConfigurationException;
 import com.mapbox.services.android.telemetry.location.LocationEngine;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Ignore
 public class MapboxTest {
 
   private Context context;

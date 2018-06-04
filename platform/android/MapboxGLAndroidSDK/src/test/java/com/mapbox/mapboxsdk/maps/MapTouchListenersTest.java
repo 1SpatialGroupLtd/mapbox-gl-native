@@ -65,12 +65,12 @@ public class MapTouchListenersTest {
 
     MapboxMap.OnFlingListener listener = mock(MapboxMap.OnFlingListener.class);
     mapGestureDetector.addOnFlingListener(listener);
-    mapGestureDetector.notifyOnFlingListeners();
-    verify(listener, times(1)).onFling();
+    mapGestureDetector.notifyOnFlingListeners(pointF, pointF);
+    verify(listener, times(1)).onFling(latLng, latLng);
 
     mapGestureDetector.removeOnFlingListener(listener);
-    mapGestureDetector.notifyOnFlingListeners();
-    verify(listener, times(1)).onFling();
+    mapGestureDetector.notifyOnFlingListeners(pointF, pointF);
+    verify(listener, times(1)).onFling(latLng, latLng);
   }
 
   @Test
@@ -85,11 +85,11 @@ public class MapTouchListenersTest {
 
     MapboxMap.OnScrollListener listener = mock(MapboxMap.OnScrollListener.class);
     mapGestureDetector.addOnScrollListener(listener);
-    mapGestureDetector.notifyOnScrollListeners();
-    verify(listener, times(1)).onScroll();
+    mapGestureDetector.notifyOnScrollListeners(pointF, pointF, MapboxMap.ScrollEventType.SCROLL);
+    verify(listener, times(1)).onScroll(latLng, latLng, MapboxMap.ScrollEventType.SCROLL);
 
     mapGestureDetector.removeOnScrollListener(listener);
-    mapGestureDetector.notifyOnScrollListeners();
-    verify(listener, times(1)).onScroll();
+    mapGestureDetector.notifyOnScrollListeners(pointF, pointF, MapboxMap.ScrollEventType.SCROLL);
+    verify(listener, times(1)).onScroll(latLng, latLng, MapboxMap.ScrollEventType.SCROLL);
   }
 }

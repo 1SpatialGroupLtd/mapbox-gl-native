@@ -115,7 +115,7 @@ RunLoop::Impl::Impl(RunLoop* runLoop_, RunLoop::Type type) : runLoop(runLoop_) {
     }
 }
 
-RunLoop::Impl::~Impl() {
+RunLoop::Impl::~Impl() throw(std::exception){
     alarm.reset();
 
     if (ALooper_removeFd(loop, fds[PIPE_OUT]) != 1) {

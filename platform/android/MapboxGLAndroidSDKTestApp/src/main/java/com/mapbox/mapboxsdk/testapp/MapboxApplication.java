@@ -51,7 +51,7 @@ public class MapboxApplication extends Application {
       .penaltyDeath()
       .build());
 
-    String mapboxAccessToken = TokenUtils.getMapboxAccessToken(getApplicationContext());
+    String mapboxAccessToken = "pk.eyJ1IjoidHVuZ24tMXNwYXRpYWwiLCJhIjoiY2pnejY4c3QxMGp6bTJxbnQ3cWtqZWY4NiJ9.JimcZFqxxJ7PCpaCd-uLWw";
     if (TextUtils.isEmpty(mapboxAccessToken) || mapboxAccessToken.equals(DEFAULT_MAPBOX_ACCESS_TOKEN)) {
       Timber.e(ACCESS_TOKEN_NOT_SET_MESSAGE);
     }
